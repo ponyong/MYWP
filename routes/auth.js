@@ -2,8 +2,7 @@ module.exports = (app, passport) => {
   app.get('/signin', (req, res, next) => {
     res.render('signin');
   });
-}
-/*
+
   app.post('/signin', passport.authenticate('local-signin', {
     successRedirect : '/questions', // redirect to the secure profile section
     failureRedirect : '/signin', // redirect back to the signup page if there is an error
@@ -30,4 +29,3 @@ module.exports = (app, passport) => {
     res.redirect('/');
   });
 };
-*/
