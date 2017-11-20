@@ -23,6 +23,17 @@ module.exports = (app, passport) => {
     }
   );
 
+  router.get('/oauth/kakao/callback', passport.authenticate('login-kakao', {
+      successRedirect: '/main', // 성공하면 /main으로 가도록
+      failureRedirect: '/'
+  }));
+
+  router.get('/kakao', passport.authenticate('login-kakao'));
+
+
+
+
+
   app.get('/signout', (req, res) => {
     req.logout();
     req.flash('success', 'Successfully signed out');

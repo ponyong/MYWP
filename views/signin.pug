@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="//developers.kakao.com/sdk/js/kakao.min.js")
   .container
     .clearfix
       form.form-signin(action='/signin', method='POST')
@@ -25,6 +26,10 @@ block content
           i.fa.fa-facebook.fa-lg
           | &nbsp;
           | Signin with Facebook
+        a.btn.btn-block(href='/auth/kakao')
+          img(src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="280")
+
+    
 
         div.sub 
           a(href='/users/new') Signup
@@ -32,4 +37,4 @@ block content
           | /
           |
           a(href='/reset-password') Reset Password
-      
+                
