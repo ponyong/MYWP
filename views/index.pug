@@ -3,6 +3,22 @@ extends layout
 block hero-unit
   .jumbotron
     .container
+      div.search-border
+        div.search-text Find Boss Fight Friend 
+        nav.navbar.navbar-light.bg-light.justify-content-center(aria-label="toggle-navigation")
+        form.form-inline
+          input.form-control.mr-sm-2(type="text" placeholder="Search events or categories")
+          input.form-control.mr-sm-2(type="text" placeholder="City or location")
+          select.custom-select
+            option(selected) All Dates
+              option(value="1") 던전 & 파이터 
+              option(value="2") Tomorrow
+              option(value="3") This Week
+              option(value="4") This Weekend
+              option(value="5") Next Week
+              option(value="6") Next Month
+          button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+
       
 block content
   .container
@@ -17,4 +33,36 @@ block content
           li 답변글 등록/삭제
           li 사용자 관리/인증
           li API
-
+    
+    .row
+      .col-md-4
+        div.card-deck
+          div.card
+            img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
+            div.card-body
+              h4.card-title 2008.04.30 개봉
+              p.card-text Iron Man1
+              div.card-footer
+              small.text-muted #평점 8.88 #마블영화의시작
+      .col-md-4
+          div.card-deck
+            div.card
+              img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
+              div.card-body
+                h4.card-title 2008.04.30 개봉
+                p.card-text Iron Man1
+                div.card-footer
+                small.text-muted #평점 8.88 #마블영화의시작
+      .col-md-4
+          div.card-deck
+            div.card
+              img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
+              div.card-body
+                h4.card-title 2008.04.30 개봉
+                p.card-text Iron Man1
+                div.card-footer
+                small.text-muted #평점 8.88 #마블영화의시작
+                      
+                        
+            
+              

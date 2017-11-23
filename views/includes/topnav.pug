@@ -1,7 +1,7 @@
 .header.clearfix
   nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
     .container
-      a.navbar-brand(href="/") MJ Overflow
+      a.navbar-brand(href="/") Boss Fight
       button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarsExampleDefault", aria-controls="navbarsExampleDefault", aria-expanded="false", aria-label="Toggle navigation")
         span.navbar-toggler-icon
 
@@ -15,7 +15,7 @@
             li.nav-item
               a.nav-link(href='/signin') Signin
             li.nav-item
-              a.nav-link(href='/users/new') Signup
+              a.nav-link(href='/users/new') Sign Up
           else
             li.nav-item
               a.nav-link(href=`/users/${currentUser._id}`) My Profile
