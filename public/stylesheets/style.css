@@ -9,6 +9,17 @@ body {
 a:hover {
   text-decoration: none; }
 
+.jumbotron {
+  margin-top: -1em;
+  background: url("/images/boss.jpg") no-repeat left center;
+  min-height: 20em;
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); }
+
+.search-text {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: orange; }
 
 .search-border {
   padding: 20px;
@@ -20,22 +31,7 @@ a:hover {
   margin-left: 5%;
   height: 200px;
   position: relative;
-  top: 120px;
-}
-
-.search-text {
-  font-size: 3em;
-  margin-bottom: 10px;
-  color: orange;
-}
-
-
-.jumbotron {
-  margin-top: -1em;
-  background: url("/images/boss.jpg") no-repeat left center;
-  min-height: 20em;
-  color: #fff;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); }
+  top: 80px; }
 
 .form-actions {
   padding: 19px 20px 20px;
@@ -55,7 +51,7 @@ a:hover {
   font-size: 2.5rem;
   margin: 1em 0 0.5em 0;
   border-bottom: 1px solid #eee;
-  color: #011a76; }
+  color: #011a72; }
 
 .header > .navbar {
   background-color: #011a72 !important; }

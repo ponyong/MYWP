@@ -1,9 +1,57 @@
 .form-group
   label(for="title") Title
-  input.form-control(type="text", name="title", placeholder="What's your question?", value=question.title)
+  label(class="mr-sm-2" for="inlineFormCustomSelectPref") Preference
+  select(type = "text" id="title_selecter" class="custom-select mb-2 mr-sm-2 mb-sm-0")
+    option(selected) Choose...
+    option(value="1") One
+    option(value="2") Two
+    option(value="3") Three
+  input.form-control(type="text", id="TITLE", name="title", placeholder="제목", value=question.title)
+
 .form-group
-  label(for="question") Question
+  .form-row
+    .col-3
+      label(for="title") 탱커
+      select(type = "text" id="TANK_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
+        option(selected) 인원
+        option(value="1") 1
+        option(value="2") 2
+        option(value="3") 3
+      input.form-control(type="text", id="TANKER", name="tanker", placeholder="제목", value=question.title)      
+    .col-3
+      label(for="title") 딜러 
+      select(type = "text" id="DEALER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
+        option(selected) 인원
+        option(value="1") 1
+        option(value="2") 2
+        option(value="3") 3
+      input.form-control(type="text", id="DEALER", name="dealer", placeholder="제목", value=question.title)
+    .col-3
+      label(for="title") 버퍼
+      select(type = "text" id="BUFFER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
+        option(selected) 인원
+        option(value="1") 1
+        option(value="2") 2
+        option(value="3") 3
+      input.form-control(type="text", id="BUFFER", name="buffer", placeholder="제목", value=question.title)
+    .col-3
+      label(for="title") 힐러
+      select(type = "text" id="HEAL_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
+        option(selected) 인원
+        option(value="1") 1
+        option(value="2") 2
+        option(value="3") 3
+      input.form-control(type="text", id="HEALER", name="healer", placeholder="제목", value=question.title)
+.form-group
+  label(for="question")  요구사항 
   textarea.form-control(name="content", rows="5")= question.content
 .form-group
   label(for="tags") Tags
   input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+    
+    
+script(src="https://code.jquery.com/jquery-3.2.1.js")
+script
+  include select.js
+  
+    

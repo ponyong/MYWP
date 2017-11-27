@@ -1,6 +1,6 @@
 const express = require('express');
 const Question = require('../models/question');
-const Answer = require('../models/answer'); 
+const Answer = require('../models/answer');
 const catchErrors = require('../lib/async-error');
 
 const router = express.Router();
@@ -29,8 +29,8 @@ router.get('/', catchErrors(async (req, res, next) => {
     ]};
   }
   const questions = await Question.paginate(query, {
-    sort: {createdAt: -1}, 
-    populate: 'author', 
+    sort: {createdAt: -1},
+    populate: 'author',
     page: page, limit: limit
   });
   res.render('questions/index', {questions: questions, term: term, query: req.query});
