@@ -25,7 +25,8 @@ router.get('/', catchErrors(async (req, res, next) => {
   if (term) {
     query = {$or: [
       {title: {'$regex': term, '$options': 'i'}},
-      {content: {'$regex': term, '$options': 'i'}}
+      {content: {'$regex': term, '$options': 'i'}},
+      {tanker: {'$regex': term, '$options': 'i'}},
     ]};
   }
   const questions = await Question.paginate(query, {
@@ -82,6 +83,7 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     title: req.body.title,
     author: user._id,
     content: req.body.content,
+    tanker: req.body.tanker,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();

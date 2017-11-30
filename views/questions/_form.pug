@@ -1,17 +1,23 @@
 .form-group
-  label(for="title") Title
-  label(class="mr-sm-2" for="inlineFormCustomSelectPref") Preference
+  label(for="title") 레이드 종류
   select(type = "text" id="title_selecter" class="custom-select mb-2 mr-sm-2 mb-sm-0")
-    option(selected) Choose...
-    option(value="1") One
-    option(value="2") Two
-    option(value="3") Three
+    option(selected) 선택...
+    option(value="1") 안톤
+    option(value="2") 루크
+    option(value="3") 메가팬테스
   input.form-control(type="text", id="TITLE", name="title", placeholder="제목", value=question.title)
-
+.form-group
+  .form-check.form-check-inline
+    label.form-check-label
+      input.form-check-input(type="radio" name="SelectFee" id="inlineRadio1" value="0")
+      span 공대
+    label.form-check-label
+      input.form-check-input(type="radio" name="SelectFee" id="inlineRadio2" value="1")
+      span 쩔
 .form-group
   .form-row
     .col-3
-      label(for="title") 탱커
+      label(for="tanker") 탱커
       select(type = "text" id="TANK_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
         option(selected) 인원
         option(value="1") 1
@@ -19,7 +25,7 @@
         option(value="3") 3
       input.form-control(type="text", id="TANKER", name="tanker", placeholder="제목", value=question.title)      
     .col-3
-      label(for="title") 딜러 
+      label(for="dealer") 딜러 
       select(type = "text" id="DEALER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
         option(selected) 인원
         option(value="1") 1
@@ -27,7 +33,7 @@
         option(value="3") 3
       input.form-control(type="text", id="DEALER", name="dealer", placeholder="제목", value=question.title)
     .col-3
-      label(for="title") 버퍼
+      label(for="buffer") 버퍼
       select(type = "text" id="BUFFER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
         option(selected) 인원
         option(value="1") 1
@@ -35,7 +41,7 @@
         option(value="3") 3
       input.form-control(type="text", id="BUFFER", name="buffer", placeholder="제목", value=question.title)
     .col-3
-      label(for="title") 힐러
+      label(for="healer") 힐러
       select(type = "text" id="HEAL_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
         option(selected) 인원
         option(value="1") 1

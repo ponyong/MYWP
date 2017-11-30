@@ -6,7 +6,7 @@ block content
 
     .question.show
       include _question
-
+      
       .buttons
         button.btn.btn-primary #[i.fa.fa-thumbs-up] Like
         if currentUser && question.author.id == currentUser.id
@@ -27,4 +27,3 @@ block content
         label(for='answer') Your Answer
         textarea.form-control(name="content", rows="5")
       button.btn.btn-primary(type="submit") Post Your Answer
-
