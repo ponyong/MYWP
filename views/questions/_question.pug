@@ -7,7 +7,12 @@
   .col-sm
     h5 최대 모집 인원
     .numbers.
-      #[span.number.num-votes= question.tanker] tanker
+      #[span.number.num-gold= question.number_input] 골드
+      #[span.number.num-tank= question.tanker] 탱커
+      #[span.number.num-deal= question.dealer] 딜러
+      #[span.number.num-buff= question.buffer] 버퍼
+      #[span.number.num-heal= question.healer] 힐러
+      #[span.number.num-votes= question.numLikes] Like
       #[span.number.num-answers= question.numAnswers] answers,
       #[span.number.num-views= question.numReads] reads
   .col-sm

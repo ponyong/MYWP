@@ -24,9 +24,14 @@ router.get('/', catchErrors(async (req, res, next) => {
   const term = req.query.term;
   if (term) {
     query = {$or: [
+      {mainTitle: {'$regex': term, '$options': 'i'}},
       {title: {'$regex': term, '$options': 'i'}},
+      {number_input: {'$regex': term, '$options': 'i'}},
       {content: {'$regex': term, '$options': 'i'}},
       {tanker: {'$regex': term, '$options': 'i'}},
+      {dealer: {'$regex': term, '$options': 'i'}},
+      {buffer: {'$regex': term, '$options': 'i'}},
+      {healer: {'$regex': term, '$options': 'i'}},
     ]};
   }
   const questions = await Question.paginate(query, {
@@ -80,10 +85,15 @@ router.delete('/:id', needAuth, catchErrors(async (req, res, next) => {
 router.post('/', needAuth, catchErrors(async (req, res, next) => {
   const user = req.user;
   var question = new Question({
+    mainTitle: req.body.mainTitle,
     title: req.body.title,
     author: user._id,
+    number_input: req.body.number_input,
     content: req.body.content,
     tanker: req.body.tanker,
+    dealer: req.body.dealer,
+    buffer: req.body.buffer,
+    healer: req.body.healer,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();

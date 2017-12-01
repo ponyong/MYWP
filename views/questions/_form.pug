@@ -1,19 +1,32 @@
 .form-group
+  label(for="mainTitle") 파티명 
+  textarea.form-control(name="content", rows="1")= question.content
+    
+.form-group
   label(for="title") 레이드 종류
   select(type = "text" id="title_selecter" class="custom-select mb-2 mr-sm-2 mb-sm-0")
     option(selected) 선택...
     option(value="1") 안톤
     option(value="2") 루크
     option(value="3") 메가팬테스
-  input.form-control(type="text", id="TITLE", name="title", placeholder="제목", value=question.title)
+  input.form-control(type="hidden", id="TITLE", name="title", placeholder="제목", value=question.title)
 .form-group
-  .form-check.form-check-inline
-    label.form-check-label
-      input.form-check-input(type="radio" name="SelectFee" id="inlineRadio1" value="0")
-      span 공대
-    label.form-check-label
-      input.form-check-input(type="radio" name="SelectFee" id="inlineRadio2" value="1")
-      span 쩔
+    .form-check.form-check-inline
+      label.form-check-label
+        input.form-check-input(type="radio" name="SelectFee" id="FREE" value="0")
+        span 공대
+      label.form-check-label
+        input.form-check-input(type="radio" name="SelectFee" id="NO_FREE" value="1")
+        span 쩔
+.form-group
+    label(for="number_input")
+      | 골드(만)
+      input.form-control(type="number" value="0" name="number_input") 
+.form-group
+    label(for="datetime-start") 시작시간
+      input.form-control(type="datetime-local" value="2017-08-19T13:45:00" id="datetime-start")
+    label(for="datetime-end") 종료시간
+      input.form-control(type="datetime-local" value="2017-08-19T13:45:00" id="datetime-end")
 .form-group
   .form-row
     .col-3
@@ -23,7 +36,7 @@
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="text", id="TANKER", name="tanker", placeholder="제목", value=question.title)      
+      input.form-control(type="hidden", id="TANKER", name="tanker", placeholder="제목", value=question.title)      
     .col-3
       label(for="dealer") 딜러 
       select(type = "text" id="DEALER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
@@ -31,7 +44,7 @@
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="text", id="DEALER", name="dealer", placeholder="제목", value=question.title)
+      input.form-control(type="hidden", id="DEALER", name="dealer", placeholder="제목", value=question.title)
     .col-3
       label(for="buffer") 버퍼
       select(type = "text" id="BUFFER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
@@ -39,7 +52,7 @@
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="text", id="BUFFER", name="buffer", placeholder="제목", value=question.title)
+      input.form-control(type="hidden", id="BUFFER", name="buffer", placeholder="제목", value=question.title)
     .col-3
       label(for="healer") 힐러
       select(type = "text" id="HEAL_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
@@ -47,17 +60,51 @@
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="text", id="HEALER", name="healer", placeholder="제목", value=question.title)
+      input.form-control(type="hidden", id="HEALER", name="healer", placeholder="제목", value=question.title)
 .form-group
   label(for="question")  요구사항 
   textarea.form-control(name="content", rows="5")= question.content
 .form-group
   label(for="tags") Tags
   input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+.form-group
+  label(for='img') 사진
+  input.form-control(type="file", name="img")
     
+script.
+  $(function(){
+    $('#FREE, #NO_FREE').change(function(){
+      if($('#FREE').is(':checked')){
+        this.form.number_input.disabled = true;
+      }else if($('#NO_FREE').is(':checked')){
+        this.form.number_input.disabled = false;
+      }
+    });
     
-script(src="https://code.jquery.com/jquery-3.2.1.js")
-script
-  include select.js
-  
+    $('#title_selecter').click(function () {
+      var selected = $("#title_selecter > option:selected").text();
+      $('#TITLE').val(selected);
+    });
+    
+    $('#TANK_NUM').click(function () {
+      var selected = $("#TANK_NUM > option:selected").text();
+      $('#TANKER').val(selected);
+    });
+    
+    $('#DEALER_NUM').click(function () {
+      var selected = $("#DEALER_NUM > option:selected").text();
+      $('#DEALER').val(selected);
+    });
+    
+    $('#BUFFER_NUM').click(function () {
+      var selected = $("#BUFFER_NUM > option:selected").text();
+      $('#BUFFER').val(selected);
+    });
+    
+    $('#HEALER_NUM').click(function () {
+      var selected = $("#HEALER_NUM > option:selected").text();
+      $('#HEALER').val(selected);
+    });
+
+  });
     
