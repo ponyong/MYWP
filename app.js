@@ -16,7 +16,7 @@ var users = require('./routes/users');
 var questions = require('./routes/questions');
 
 var passportConfig = require('./lib/passport-config');
-
+var request = require('request');
 var app = express();
 
 // view engine setup
@@ -91,6 +91,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/questions', questions);
 require('./routes/auth')(app, passport);
+app.use('/api', require('./routes/api'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

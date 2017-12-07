@@ -18,38 +18,17 @@ block hero-unit
               option(value="5") Next Week
               option(value="6") Next Month
           button.btn.btn-outline-success.my-2.my-sm-0(type="submit") Search
+  .card-deck
+    for question in questions
+      .card.col-lg-3.col-sm-10
+        img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
+        .card-body
+          h4.card-title
+            a.title(href=`/questions/${question.id}`)=question.title
+          p.card-text=question.content
 
-block content
-
-    .row
-      .col-md-4
-        div.card-deck
-          div.card
-            img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
-            div.card-body
-              h4.card-title 2008.04.30 개봉
-              p.card-text Iron Man1
-              div.card-footer
-              small.text-muted #평점 8.88 #마블영화의시작
-      .col-md-4
-          div.card-deck
-            div.card
-              img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
-              div.card-body
-                h4.card-title 2008.04.30 개봉
-                p.card-text Iron Man1
-                div.card-footer
-                small.text-muted #평점 8.88 #마블영화의시작
-      .col-md-4
-          div.card-deck
-            div.card
-              img.card-img-top(src="/images/boss1.jpg" alt="Card image cap")
-              div.card-body
-                h4.card-title 2008.04.30 개봉
-                p.card-text Iron Man1
-                div.card-footer
-                small.text-muted #평점 8.88 #마블영화의시작
-                      
-                        
-            
-              
+        .card-footer
+          small.text-muted.tags.badges
+            each tag in question.tags
+              span.badge.badge-phill.badge-secondary= tag
+              | 
