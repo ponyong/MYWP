@@ -56,7 +56,7 @@ router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
   res.render('users/edit', {user: user});
 }));
 
-router.put('/:id', needAuth, catchErrors(async (req, res, next) => {
+router.post('/:id', needAuth, catchErrors(async (req, res, next) => {
   const err = validateForm(req.body);
   if (err) {
     req.flash('danger', err);

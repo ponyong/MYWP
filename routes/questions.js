@@ -31,7 +31,6 @@ router.get('/', catchErrors(async (req, res, next) => {
       {tanker: {'$regex': term, '$options': 'i'}},
       {dealer: {'$regex': term, '$options': 'i'}},
       {buffer: {'$regex': term, '$options': 'i'}},
-      {healer: {'$regex': term, '$options': 'i'}},
     ]};
   }
   const questions = await Question.paginate(query, {
@@ -60,7 +59,7 @@ router.get('/:id', catchErrors(async (req, res, next) => {
   res.render('questions/show', {question: question, answers: answers});
 }));
 
-router.put('/:id', catchErrors(async (req, res, next) => {
+router.post('/:id', catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id);
 
   if (!question) {
@@ -69,6 +68,11 @@ router.put('/:id', catchErrors(async (req, res, next) => {
   }
   question.title = req.body.title;
   question.content = req.body.content;
+  question.mainTitle = req.body.mainTitle;
+  question.tanker = req.body.tanker;
+  question.dealer = req.body.dealer;
+  question.buffer = req.body.buffer;
+  question.number_input = req.body.number_input;
   question.tags = req.body.tags.split(" ").map(e => e.trim());
 
   await question.save();
