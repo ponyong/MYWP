@@ -9,7 +9,7 @@ block content
       input.form-control.mr-sm-2(type='text', name='term', placeholder='Search', aria-label='Search', value=term)
 
     h1.main-title 
-      | Questions
+      | 파티를 만들어봐요 ★
       if questions.total > 0
         .small Total #{questions.total} question(s)
 
@@ -19,10 +19,10 @@ block content
       .questions
         each question in questions.docs
           .question
-            a.title(href=`/questions/${question.id}`)= question.title
+            a.title(href=`/questions/${question.id}`)= question.mainTitle
             include _question
 
       +paginate(questions, '/questions', query)
 
     hr
-    a.btn.btn-primary(href='/questions/new') Ask Question
+    a.btn.btn-primary(href='/questions/new') 파티 등록

@@ -2,7 +2,8 @@ extends ../layout
 
 block content
   .container
-    h1.main-title= question.title
+    h1.main-title
+      span BOSS :#{question.title}
 
     .question.show
       include _question

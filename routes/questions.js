@@ -93,7 +93,6 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     tanker: req.body.tanker,
     dealer: req.body.dealer,
     buffer: req.body.buffer,
-    healer: req.body.healer,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();

@@ -9,8 +9,9 @@
         ul.navbar-nav.ml-auto
           li.nav-item
             a.nav-link(href="/questions") 파티 찾기
-          li.nav-item
-            a.nav-link(href="/users") Users
+          if currentUser && currentUser.admin
+            li.nav-item
+              a.nav-link(href="/users") Users
           if (!currentUser) 
             li.nav-item
               a.nav-link(href='/signin') 로그인

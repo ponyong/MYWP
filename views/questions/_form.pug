@@ -1,15 +1,17 @@
 .form-group
-  label(for="mainTitle") 파티명 
-  textarea.form-control(name="content", rows="1")= question.content
-    
+  label(for="mainTitle") 파티명 (*) 
+  textarea.form-control(name="mainTitle", rows="1" required)= question.mainTitle
+  
+  
 .form-group
   label(for="title") 레이드 종류
-  select(type = "text" id="title_selecter" class="custom-select mb-2 mr-sm-2 mb-sm-0")
-    option(selected) 선택...
+  select(type = "text" id="title_selecter" class="custom-select d-block mb-2 mr-sm-2 mb-sm-0" required)
+    option(value="") 선택...
     option(value="1") 안톤
     option(value="2") 루크
     option(value="3") 메가팬테스
   input.form-control(type="hidden", id="TITLE", name="title", placeholder="제목", value=question.title)
+
 .form-group
     .form-check.form-check-inline
       label.form-check-label
@@ -29,44 +31,39 @@
       input.form-control(type="datetime-local" value="2017-08-19T13:45:00" id="datetime-end")
 .form-group
   .form-row
-    .col-3
+    .col-4
       label(for="tanker") 탱커
-      select(type = "text" id="TANK_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
-        option(selected) 인원
+      select(type = "text" id="TANK_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0" required)
+        option(value="") 인원
+        option(value="0") 0
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="hidden", id="TANKER", name="tanker", placeholder="제목", value=question.title)      
-    .col-3
+      input.form-control(type="hidden", id="TANKER", name="tanker", placeholder="제목", value=question.tanker)      
+    .col-4
       label(for="dealer") 딜러 
-      select(type = "text" id="DEALER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
-        option(selected) 인원
+      select(type = "text" id="DEALER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0" required)
+        option(value="") 인원
+        option(value="0") 0
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="hidden", id="DEALER", name="dealer", placeholder="제목", value=question.title)
-    .col-3
+      input.form-control(type="hidden", id="DEALER", name="dealer", placeholder="제목", value=question.dealer)
+    .col-4
       label(for="buffer") 버퍼
-      select(type = "text" id="BUFFER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
-        option(selected) 인원
+      select(type = "text" id="BUFFER_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0" required)
+        option(value="") 인원
+        option(value="0") 0
         option(value="1") 1
         option(value="2") 2
         option(value="3") 3
-      input.form-control(type="hidden", id="BUFFER", name="buffer", placeholder="제목", value=question.title)
-    .col-3
-      label(for="healer") 힐러
-      select(type = "text" id="HEAL_NUM" class="custom-select mb-2 mr-sm-2 mb-sm-0")
-        option(selected) 인원
-        option(value="1") 1
-        option(value="2") 2
-        option(value="3") 3
-      input.form-control(type="hidden", id="HEALER", name="healer", placeholder="제목", value=question.title)
+      input.form-control(type="hidden", id="BUFFER", name="buffer", placeholder="제목", value=question.buffer)
 .form-group
-  label(for="question")  요구사항 
-  textarea.form-control(name="content", rows="5")= question.content
+  label(for="question")  특이사항(클리어 전적 등) 
+  textarea.form-control(name="content", rows="5" required)= question.content
 .form-group
   label(for="tags") Tags
-  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "")
+  input.form-control(type="text", name="tags", placeholder="tags separated by spaces", value=question.tags ? question.tags.join(" ") : "" required)
 .form-group
   label(for='img') 사진
   input.form-control(type="file", name="img")
@@ -101,10 +98,6 @@ script.
       $('#BUFFER').val(selected);
     });
     
-    $('#HEALER_NUM').click(function () {
-      var selected = $("#HEALER_NUM > option:selected").text();
-      $('#HEALER').val(selected);
-    });
 
   });
     

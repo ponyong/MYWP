@@ -6,7 +6,6 @@ const router = express.Router();
 
 // Index
 router.get('/', catchErrors(async (req, res, next) => {
-  console.log('API call')
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 10;
   var query = {};
@@ -20,7 +19,6 @@ router.get('/', catchErrors(async (req, res, next) => {
       {tanker: {'$regex': term, '$options': 'i'}},
       {dealer: {'$regex': term, '$options': 'i'}},
       {buffer: {'$regex': term, '$options': 'i'}},
-      {healer: {'$regex': term, '$options': 'i'}},
     ]};
   }
   const questions = await Question.paginate({}, {

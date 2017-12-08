@@ -6,6 +6,21 @@ body {
   body > .main-content {
     min-height: 400px; }
 
+.container {
+  padding: 0; }
+  .container .col-lg-4 {
+    width: 33%; }
+
+.content {
+  font-size: 25px;
+  font-style: oblique; }
+
+a.title {
+  width: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
 a:hover {
   text-decoration: none; }
 
