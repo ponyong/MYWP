@@ -27,7 +27,9 @@ block hero-unit
           h4.card-title
             a.title(href=`/questions/${question.id}`)=question.mainTitle
           p.card-text
-            span BOSS :#{question.title}
+            span BOSS :#{question.title} 
+            
+          include questions/partyperson
 
         .card-footer
           small.text-muted.tags.badges
