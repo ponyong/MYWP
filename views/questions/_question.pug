@@ -1,14 +1,13 @@
-.content=question.mainTitle
-
 .row
   .col-sm
-    include partyperson
+    include partyperson 
 .tags.badges
   each tag in question.tags
     span.badge.badge-phill.badge-secondary= tag
     | 
   .col-sm
     .author
+      |
       | 조회수 #[span.number.num-vote_buf= question.numReads]
       | asked on #{moment(question.createdAt).format('YYYY-MM-DD')}
       if question.author
