@@ -21,7 +21,8 @@ block content
     p
       if currentUser && currentUser.admin
         a.btn.btn-outline-secondary(href='/users/') 유저 목록
-        | 
-      a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) 수정
+        |
+      if !user.facebook.id 
+        a.btn.btn-outline-primary(href=`/users/${user._id}/edit`) 수정
       | 
       a.btn.btn-outline-danger.need-confirm-btn(href=`/users/${user._id}?_method=DELETE`) 탈퇴
