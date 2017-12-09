@@ -2,6 +2,7 @@ const express = require('express');
 const Question = require('../models/question');
 const Answer = require('../models/answer');
 const catchErrors = require('../lib/async-error');
+const LikeLog = require('../models/like-log');
 
 const router = express.Router();
 
@@ -31,6 +32,9 @@ router.get('/', catchErrors(async (req, res, next) => {
       {tanker: {'$regex': term, '$options': 'i'}},
       {dealer: {'$regex': term, '$options': 'i'}},
       {buffer: {'$regex': term, '$options': 'i'}},
+      {vote_tan: {'$regex': term, '$options': 'i'}},
+      {vote_deal: {'$regex': term, '$options': 'i'}},
+      {vote_buf: {'$regex': term, '$options': 'i'}},
     ]};
   }
   const questions = await Question.paginate(query, {
@@ -50,13 +54,17 @@ router.get('/:id/edit', needAuth, catchErrors(async (req, res, next) => {
   res.render('questions/edit', {question: question});
 }));
 
-router.get('/:id', catchErrors(async (req, res, next) => {
+router.get('/:id',needAuth, catchErrors(async (req, res, next) => {
   const question = await Question.findById(req.params.id).populate('author');
   const answers = await Answer.find({question: question.id}).populate('author');
   question.numReads++;    // TODO: 동일한 사람이 본 경우에 Read가 증가하지 않도록???
-
+  const likelogs = await LikeLog.findOne({author:req.user.id, question: question.id})
+  var isVoted = false;
+  if(likelogs) {
+    isVoted = true;
+  }
   await question.save();
-  res.render('questions/show', {question: question, answers: answers});
+  res.render('questions/show', {question: question, answers: answers, isVoted:isVoted});
 }));
 
 router.post('/:id', catchErrors(async (req, res, next) => {
@@ -97,6 +105,11 @@ router.post('/', needAuth, catchErrors(async (req, res, next) => {
     tanker: req.body.tanker,
     dealer: req.body.dealer,
     buffer: req.body.buffer,
+    vote_tan: req.body.vote_tan,
+    vote_deal: req.body.vote_deal,
+    vote_buf: req.body.vote_buf,
+    start_time: req.body.start_time,
+    end_time: req.body.end_time,
     tags: req.body.tags.split(" ").map(e => e.trim()),
   });
   await question.save();

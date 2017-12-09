@@ -25,10 +25,10 @@
       | 골드(만)
       input.form-control(type="number" value="0" name="number_input") 
 .form-group
-    label(for="datetime-start") 시작시간
-      input.form-control(type="datetime-local" value="2017-08-19T13:45:00" id="datetime-start")
+    label(for="datetime-star") 시작시간
+      input.form-control(type="datetime-local" name="start_time" value="#{moment(Date.now).format('YYYY-MM-DD')}" id="datetime-start")
     label(for="datetime-end") 종료시간
-      input.form-control(type="datetime-local" value="2017-08-19T13:45:00" id="datetime-end")
+      input.form-control(type="datetime-local" value="" id="datetime-end")
 .form-group
   .form-row
     .col-4

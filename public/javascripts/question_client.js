@@ -4,12 +4,12 @@ $(function() {
     if ($el.hasClass('loading')) return;
     $el.addClass('loading');
     $.ajax({
-      url: '/api/questions/' + $el.data('id') + '/like',
+      url: '/api/questions/' + $el.data('id') + '/' + $el.data('position') + '/like',
       method: 'POST',
       dataType: 'json',
       success: function(data) {
         $('.question .num-likes').text(data.numLikes);
-        $('.question-like-btn').hide();
+        window.location.reload();
       },
       error: function(data, status) {
         if (data.status == 401) {

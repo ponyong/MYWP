@@ -20,6 +20,11 @@ router.get('/', catchErrors(async (req, res, next) => {
       {dealer: {'$regex': term, '$options': 'i'}},
       {buffer: {'$regex': term, '$options': 'i'}},
       {healer: {'$regex': term, '$options': 'i'}},
+      {start_time: {'$regex': term, '$options': 'i'}},
+      {end_time:{'$regex': term, '$options': 'i'}},
+      {vote_tan: {'$regex': term, '$options': 'i'}},
+      {vote_deal: {'$regex': term, '$options': 'i'}},
+      {vote_buf: {'$regex': term, '$options': 'i'}},
     ]};
   }
   const questions = await Question.paginate({}, {
